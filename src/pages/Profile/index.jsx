@@ -18,7 +18,7 @@ export const Profile = ({ user }) => {
     dispatch(fetchAuthMe());
     const { avatarUrl } = user;
     setImageUrl(avatarUrl);
-  }, [dispatch]);
+  }, [dispatch, user]);
 
   const handleChangeFile = async (event) => {
     try {

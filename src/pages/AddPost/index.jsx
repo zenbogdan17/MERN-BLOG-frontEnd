@@ -22,7 +22,7 @@ export const AddPost = () => {
   const navigate = useNavigate();
   const isAuth = useSelector(selectIsAuth);
 
-  const [isLoading, setIsLoading] = useState(false);
+  // const [isLoading, setIsLoading] = useState(false);
   const [text, setText] = useState('');
   const [title, setTitle] = useState('');
   const [imageUrl, setImageUrl] = useState('');
@@ -54,8 +54,6 @@ export const AddPost = () => {
 
   const onSubmit = async () => {
     try {
-      setIsLoading(true);
-
       const fields = {
         title,
         imageUrl,

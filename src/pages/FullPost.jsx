@@ -31,7 +31,7 @@ export const FullPost = () => {
     };
 
     fetchData();
-  }, [id]);
+  }, [dispatch, id]);
 
   if (isLoading) {
     return <Post isLoading={isLoading} isFullPost />;

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import clsx from 'clsx';
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import IconButton from '@mui/material/IconButton';
 import DeleteIcon from '@mui/icons-material/Clear';
 import EditIcon from '@mui/icons-material/Edit';
@@ -10,7 +10,7 @@ import CommentIcon from '@mui/icons-material/ChatBubbleOutlineOutlined';
 import styles from './Post.module.scss';
 import { UserInfo } from '../UserInfo';
 import { PostSkeleton } from './Skeleton';
-import { Link, Navigate, useParams } from 'react-router-dom';
+import { Link /*, Naviate*/ } from 'react-router-dom';
 import { fetchRemovePost } from '../../redux/slices/posts';
 
 export const Post = ({
@@ -45,7 +45,7 @@ export const Post = ({
   };
 
   if (onClickPost) {
-    // return <Navigate to={`/posts/${id}`} />;
+    //    return <Navigate to={`/posts/${id}`} />;
   }
 
   return (
