@@ -1,0 +1,47 @@
+.root {
+  padding: 20px;
+  background-color: #f5f5f5;
+}
+
+.title {
+  color: #333;
+  margin-bottom: 10px;
+}
+.title__post {
+  margin: 30px 0;
+}
+
+.title__underline::after {
+  content: '';
+  display: block;
+  width: 89vw;
+  height: 2px;
+  background-color: #333;
+  margin-bottom: 30px;
+}
+
+.avatar {
+  width: 200px;
+  height: 200px;
+  margin-bottom: 20px;
+}
+
+.subtitle {
+  color: #999;
+  margin-bottom: 5px;
+}
+
+.name {
+  color: #333;
+  font-weight: bold;
+}
+
+.button {
+  background-color: #007bff;
+  color: white;
+  display: flex;
+
+  &:hover {
+    background-color: #0056b3;
+  }
+}
