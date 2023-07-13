@@ -1,20 +1,26 @@
-import { Avatar, Button, Grid, Typography } from '@mui/material';
+import { Button, Grid, Typography } from '@mui/material';
 import styles from './Profile.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import { fetchAuthMe } from '../../redux/slices/auth';
 import axios from '../../axios';
 import { Post } from '../../components/Post';
+import { fetchPosts } from '../../redux/slices/posts';
+import noavatar from './noavatar.png';
 
-export const Profile = ({ user }) => {
-  const dispatch = useDispatch();
-  // const user = useSelector((state) => state.auth.data);
-  const inputFileRef = useRef(null);
+export const Profile = () => {
   const [imageUrl, setImageUrl] = useState('');
   const { posts } = useSelector((state) => state.posts);
   const userData = useSelector((state) => state.auth);
+  const user = useSelector((state) => state.auth.data);
+  const inputFileRef = useRef(null);
+  const dispatch = useDispatch();
 
   useEffect(() => {
+    if (user) {
+      return;
+    }
+    dispatch(fetchPosts());
     dispatch(fetchAuthMe());
     const { avatarUrl } = user;
     setImageUrl(avatarUrl);
@@ -40,14 +46,12 @@ export const Profile = ({ user }) => {
           <Typography className={styles.title} variant="h5">
             Your Avatar
           </Typography>
-
-          <Avatar
+          <img
             className={styles.avatar}
             src={
-              user?.avatarUrl
-                ? 'https://mern-blog.up.railway.app/' + imageUrl
-                : ''
+              'https://mern-blog.up.railway.app/' + user.avatarUrl || noavatar
             }
+            alt={imageUrl}
           />
           <Typography className={styles.subtitle} variant="h5">
             Fullname
@@ -72,9 +76,9 @@ export const Profile = ({ user }) => {
           />
         </Grid>
       </Grid>
-      <Typography className={styles.title__post} variant="h4">
+      <h2 className={styles.title__post} variant="h4">
         Your Post
-      </Typography>
+      </h2>
       <span className={styles.title__underline}></span>
       {posts.items
         .filter((post) => post.user._id === user?._id)

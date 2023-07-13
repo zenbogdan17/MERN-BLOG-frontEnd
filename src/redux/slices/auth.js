@@ -20,7 +20,7 @@ export const fetchAuthMe = createAsyncThunk('auth/fetchAuthMe', async () => {
 });
 
 const initialState = {
-  data: null,
+  data: 'null',
   status: ' loading',
 };
 
@@ -58,7 +58,6 @@ const authSlice = createSlice({
       state.status = 'error';
     },
     [fetchAuthMe.pending]: (state) => {
-      state.data = null;
       state.status = 'loading';
     },
     [fetchAuthMe.fulfilled]: (state, action) => {
