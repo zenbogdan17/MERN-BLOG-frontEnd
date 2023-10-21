@@ -3,7 +3,7 @@ import styles from './Profile.module.scss';
 import { useDispatch, useSelector } from 'react-redux';
 import { useEffect, useRef, useState } from 'react';
 import { fetchAuthMe } from '../../redux/slices/auth';
-import axios from '../../axios';
+import axios, { baseURL } from '../../axios';
 import { Post } from '../../components/Post';
 import { fetchPosts } from '../../redux/slices/posts';
 import noavatar from './noavatar.png';
@@ -49,7 +49,8 @@ export const Profile = () => {
           <img
             className={styles.avatar}
             src={
-              'https://mern-blog.up.railway.app/' + user.avatarUrl || noavatar
+              // baseURL + user.avatarUrl ||
+              noavatar
             }
             alt={imageUrl}
           />
@@ -87,11 +88,7 @@ export const Profile = () => {
             key={post?._id}
             id={post?._id}
             title={post.title}
-            imageUrl={
-              post.imageUrl
-                ? `https://mern-blog.up.railway.app${post.imageUrl}`
-                : null
-            }
+            imageUrl={post.imageUrl ? baseURL + post.imageUrl : null}
             user={post.user}
             createdAt={new Date(post.createdAt).toLocaleDateString()}
             viewsCount={post.viewsCount}

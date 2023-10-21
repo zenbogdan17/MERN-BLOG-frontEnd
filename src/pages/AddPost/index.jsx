@@ -15,7 +15,7 @@ import styles from './AddPost.module.scss';
 import { useSelector } from 'react-redux';
 import { useNavigate, Navigate, useParams } from 'react-router-dom';
 import { selectIsAuth } from '../../redux/slices/auth';
-import axios from '../../axios';
+import axios, { baseURL } from '../../axios';
 
 export const AddPost = () => {
   const { id } = useParams();
@@ -125,7 +125,7 @@ export const AddPost = () => {
         <>
           <img
             className={styles.image}
-            src={`http://localhost:4444${imageUrl}`}
+            src={baseURL + imageUrl}
             alt="Uploaded"
           />
           <br />

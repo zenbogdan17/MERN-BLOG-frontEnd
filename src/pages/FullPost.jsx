@@ -5,7 +5,7 @@ import { Index } from '../components/AddComment';
 import { CommentsBlock } from '../components/CommentsBlock';
 import ReactMarkdown from 'react-markdown';
 import { useParams } from 'react-router-dom';
-import axios from './../axios';
+import axios, { baseURL } from './../axios';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchComments } from '../redux/slices/comments';
 
@@ -36,17 +36,13 @@ export const FullPost = () => {
   if (isLoading) {
     return <Post isLoading={isLoading} isFullPost />;
   }
-  console.log(data);
+
   return (
     <>
       <Post
         id={data._id}
         title={data.title}
-        imageUrl={
-          data.imageUrl
-            ? `https://mern-blog.up.railway.app${data.imageUrl}`
-            : null
-        }
+        imageUrl={data.imageUrl ? `${baseURL + data.imageUrl}` : null}
         user={data.user}
         createdAt={data.createdAt}
         viewsCount={data.viewsCount}

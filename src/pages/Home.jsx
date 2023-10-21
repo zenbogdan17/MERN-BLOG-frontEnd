@@ -13,6 +13,7 @@ import {
   fetchTags,
 } from '../redux/slices/posts';
 import { useParams } from 'react-router-dom';
+import { baseURL } from '../axios';
 
 export const Home = () => {
   const dispatch = useDispatch();
@@ -61,9 +62,7 @@ export const Home = () => {
                       id={post?._id}
                       title={post.title}
                       imageUrl={
-                        post.imageUrl
-                          ? `https://mern-blog.up.railway.app${post.imageUrl}`
-                          : null
+                        post.imageUrl ? `${baseURL + post.imageUrl}` : null
                       }
                       user={post.user}
                       createdAt={new Date(post.createdAt).toLocaleDateString()}
@@ -87,9 +86,7 @@ export const Home = () => {
                     id={post?._id}
                     title={post.title}
                     imageUrl={
-                      post.imageUrl
-                        ? `https://mern-blog.up.railway.app${post.imageUrl}`
-                        : null
+                      post.imageUrl ? `${baseURL + post.imageUrl}` : null
                     }
                     user={post.user}
                     createdAt={new Date(post.createdAt).toLocaleDateString()}
